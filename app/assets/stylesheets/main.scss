@@ -1,0 +1,86 @@
+
+body {
+  font-size: 100%;
+  text-align: center;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-style: sans-serif;
+}
+
+nav {
+  width: 100%;
+  background-color: #000;
+  opacity: .78;
+  // position: fixed;
+  top: 0px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #eee;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 100;
+    color: white;
+}
+
+// Needs latest Compass, add '@import "compass"' to your scss
+// Permalink - use to edit and share this gradient:
+// http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+22,52b152+46,52b152+46,007dcc+100,002400+100
+
+.header-banner {
+  padding: 1px 0;
+  background: #b4ddb4; /* Old browsers */
+  background: -moz-linear-gradient(left, #b4ddb4 0%, #52b152 0%, #3e7142 0%, #58936e 34%, #74b3ba 70%, #71afd0 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#b4ddb4), color-stop(0%,#52b152), color-stop(0%,#3e7142), color-stop(34%,#58936e), color-stop(70%,#74b3ba), color-stop(100%,#71afd0)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#71afd0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#71afd0 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#71afd0 100%); /* IE10+ */
+  background: linear-gradient(to right, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#71afd0 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#71afd0',GradientType=1 );
+}
+
+.header-banner h1{
+  display: inline-block;
+}
+
+.logo {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: -6px;
+}
+
+.tile-holder {
+  max-width: 810px;
+  margin: 0 auto;
+}
+
+.tile {
+  width: 180px;
+  height: 240px;
+  border: 1px #58936E solid;
+  float: left;
+  margin: 20px 10px 0 10px;
+  border-radius: 10px;
+}
+
+
