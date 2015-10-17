@@ -1,5 +1,20 @@
 <nav>
-  <ul>
-    <li><%= link_to "Home", root_path %></li></li>
-  </ul>
+  <div class="header-banner">
+    <div class = "left">
+      <img class="logo" src="/assets/logo2.png" alt="Diamond Tree Logo"/>
+      <h1>Diamond Tree Resources</h1>
+    </div>
+    <ul class="right">
+      <li><%= link_to "Home", root_path %></li></li>
+
+      <% if user_signed_in?  %>
+        <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, class: "sign-out-link", method: :delete %></li>
+        <li><%= current_user.name %></li>
+      <% else %>
+        <li><%= link_to "Sign in", new_user_session_path, class: "sign-out-link" %></li>
+      <% end %>     
+    </ul>
+    <div class="clearfix"></div>
+  </div>
 </nav>

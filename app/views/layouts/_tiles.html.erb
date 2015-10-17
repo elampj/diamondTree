@@ -1,12 +1,23 @@
-<div class="tile-holder">
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>
-  <div class="tile"></div>  
-</div>
+<% if user_signed_in?  %>
+  <div class="tile-holder">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>  
+  </div>
+
+<% else %>
+  <h2><%= link_to "Sign in", new_user_session_path %> to see your resources!</h2>  
+  <div class="tile-holder">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+  </div>  
+
+<% end %>  
