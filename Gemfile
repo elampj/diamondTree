@@ -31,7 +31,9 @@ gem 'foundation-rails'
 
 gem 'rails_admin'
 
-gem 'bootsy'
+gem "font-awesome-rails"
+
+gem 'foundation-wysihtml5-rails'
 
 
 

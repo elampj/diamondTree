@@ -12,9 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootsy
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require foundation-wysihtml5
+//= require foundation-wysihtml5/locales
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function(){
+  $('.wysihtml5').wysihtml5();
+})
+
+$(document).on('page:load', function(){
+  window['rangy'].initialized = false
+})

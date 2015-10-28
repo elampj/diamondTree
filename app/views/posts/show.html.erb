@@ -39,7 +39,7 @@
               <div class="left-text">
                 <h3><%= post_section.title %></h3>
 
-                <p><%= post_section.summary %></p>
+                <p><%= post_section.summary.html_safe %></p>
                 <!-- <span>Learn More: </span> -->
               </div>
               <div class="right-img">
@@ -69,7 +69,7 @@
               <div class="right-text">
                 <h3><%= post_section.title %></h3>
 
-                <p><%= post_section.summary %></p>
+                <p><%= post_section.summary.html_safe %></p>
                 <!-- <span>Learn More: </span> -->
               </div>
               
@@ -105,7 +105,7 @@
     <% end %>
     
     <%= link_to 'Back to Posts', posts_path %>
-     <!-- <%= link_to 'Edit', edit_post_path(@post) %> |
-    <%= link_to 'Back', posts_path %>-->
+    <%#= link_to 'Edit', edit_post_path(@post) %>
+    <%#= link_to 'Back', posts_path %>
 </div>
 
