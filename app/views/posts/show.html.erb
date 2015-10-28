@@ -23,9 +23,15 @@
     </div>
   <% end %>
 
+  <div class="post-body">
+    <%= h(@post.body).gsub(/\n/, '<br/>').html_safe %>
+  </div>
+
+
+
   <div id="infographic">
     <% i=0 %>
-    <% @post_sections.each do |post_section| %>
+    <% PostSection.all.each do |post_section| %>
       <% if post_section.post_id == @post.id %>
         <% if i % 2 == 0 %>
           <section>
@@ -43,8 +49,11 @@
               <div class="clearfix"></div>
 
               <% if user_signed_in? && current_user.admin? %>
+                <%= link_to(edit_post_section_path(post_section)) do %>
+                  <span class="edit-icons typcn typcn-pencil"></span>
+                <% end %>
                 <%= link_to(post_section, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                  <div class="edit-icons typcn typcn-trash"></div>
+                  <span class="edit-icons typcn typcn-trash"></span>
                 <% end %> 
               <% end %>
               
@@ -67,8 +76,11 @@
               <div class="clearfix"></div>
 
               <% if user_signed_in? && current_user.admin? %>
+                <%= link_to(edit_post_section_path(post_section)) do %>
+                  <span class="edit-icons typcn typcn-pencil"></span>
+                <% end %>
                 <%= link_to(post_section, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                  <div class="edit-icons typcn typcn-trash"></div>
+                  <span class="edit-icons typcn typcn-trash"></span>
                 <% end %> 
               <% end %>   
               
@@ -79,12 +91,6 @@
       <% end %>
     <% end %>
   </div>
-
-   
-
-    <div class="post-body">
-      <%= h(@post.body).gsub(/\n/, '<br/>').html_safe %>
-    </div>
 
 
     <% if user_signed_in? && current_user.admin? %>

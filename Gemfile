@@ -31,6 +31,8 @@ gem 'foundation-rails'
 
 gem 'rails_admin'
 
+gem 'bootsy'
+
 
 
 # Use ActiveModel has_secure_password

@@ -1,6 +1,8 @@
 class PostSectionsController < ApplicationController
   before_action :set_post_section, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /post_sections
   # GET /post_sections.json
   def index
@@ -42,7 +44,10 @@ class PostSectionsController < ApplicationController
   def update
     respond_to do |format|
       if @post_section.update(post_section_params)
-        format.html { redirect_to @post_section, notice: 'Post section was successfully updated.' }
+        @post_id = @post_section.post_id.to_s
+        #@post_id = PostSection.find(params[:id]).post_id.to_s
+        #format.html { redirect_to @post_section, notice: 'Post section was successfully updated.' }
+        format.html { redirect_to posts_path+'/'+@post_id, notice: 'Post section was successfully updated.' }
         format.json { render :show, status: :ok, location: @post_section }
       else
         format.html { render :edit }
@@ -54,9 +59,11 @@ class PostSectionsController < ApplicationController
   # DELETE /post_sections/1
   # DELETE /post_sections/1.json
   def destroy
+    session[:return_to] ||= request.referer
     @post_section.destroy
     respond_to do |format|
-      format.html { redirect_to post_sections_url, notice: 'Post section was successfully destroyed.' }
+     # format.html { redirect_to post_sections_url, notice: 'Post section was successfully destroyed.' }
+      format.html { redirect_to session.delete(:return_to), notice: 'Post section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +76,6 @@ class PostSectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_section_params
-      params[:post_section]
+      params[:post_section].permit(:title, :icon, :summary, :additional_text, :post_id)
     end
 end

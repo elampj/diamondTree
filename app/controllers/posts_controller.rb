@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post_sections = PostSection.all
+    #@post_sections = PostSection.all
   end
 
   # GET /posts/new

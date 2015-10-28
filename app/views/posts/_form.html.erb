@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel wide">
 
   <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
@@ -23,7 +23,7 @@
     </div>
     <div class="field">
       <%= f.label :body %><br>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, rows: "15" %>
     </div>
     <div class="actions">
       <%= f.submit class: "button" %>
