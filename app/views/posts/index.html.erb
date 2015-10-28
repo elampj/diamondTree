@@ -1,0 +1,61 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<div class="tile-holder">
+  <h1 class="left">Listing Posts</h1>
+  <div class="clearfix"></div>
+  
+  <% @posts.each do |post| %>
+    
+    <% if user_signed_in? && current_user.access_level >= post.restricted_level || post.restricted_level <= 0 %>
+
+      <%= link_to(post) do %>
+        <div class="tile">
+          <div class="tile-inner">
+            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+            <h3><%= post.title %></h3>
+            <span class="tile-author">by: <%= post.user.fname %></span>
+    <!--         <p><%= post.body %></p> -->
+          </div>
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to(post) do %>
+              <span class="typcn typcn-eye"></span>
+            <% end %> 
+            <%= link_to(edit_post_path(post)) do %>
+              <span class="typcn typcn-pencil"></span>
+            <% end %>
+            <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+              <span class="typcn typcn-trash"></span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <% end %>
+    
+  <% @posts.each do |post| %>
+
+    <% if user_signed_in? && current_user.access_level < post.restricted_level || !user_signed_in? && post.restricted_level > 0 %>
+      <%= link_to(new_user_session_path) do %>
+        <div class="tile semi">
+          <div class="tile-inner">
+            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+            <h3><%= post.title %></h3>
+            <div class="typcn typcn-lock-closed not-semi"></div>
+            <div>Member Content</div>
+            <!-- <span class="tile-author">by: <%= post.user.fname %></span> -->
+    <!--         <p><%= post.body %></p> -->
+          </div>
+        </div>
+      <% end %> 
+    <% end %>
+
+  <% end %>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <div class="post-links">
+      <%= link_to 'New Post', new_post_path, class: "button" %>
+    </div>
+  <% end %>
+</div>
+

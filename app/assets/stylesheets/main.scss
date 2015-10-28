@@ -1,4 +1,3 @@
-
 body {
   font-size: 100%;
   text-align: center;
@@ -29,6 +28,7 @@ nav {
     linear-gradient(135deg, hsla(203, 48%, 61%, 1) 10%, hsla(203, 48%, 61%, 0) 80%),
     linear-gradient(225deg, hsla(200, 62%, 59%, 1) 10%, hsla(200, 62%, 59%, 0) 80%),
     linear-gradient(315deg, hsla(210, 50%, 67%, 1) 100%, hsla(210, 50%, 67%, 0) 70%);
+    
   // background: -moz-linear-gradient(left, #b4ddb4 0%, #52b152 0%, #3e7142 0%, #58936e 34%, #74b3ba 70%, #77BAE8 100%); /* FF3.6+ */
   // background: -webkit-gradient(linear, left top, right top, color-stop(0%,#b4ddb4), color-stop(0%,#52b152), color-stop(0%,#3e7142), color-stop(34%,#58936e), color-stop(70%,#74b3ba), color-stop(100%,#77BAE8)); /* Chrome,Safari4+ */
   // background: -webkit-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#77BAE8 100%); Chrome10+,Safari5.1+
@@ -57,12 +57,12 @@ nav a {
 h1 {
     font-size: 1.5em;
     font-weight: 100;
-    color: white;
 }
 
 // Needs latest Compass, add '@import "compass"' to your scss
 // Permalink - use to edit and share this gradient:
 // http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+22,52b152+46,52b152+46,007dcc+100,002400+100
+
 
 .header-banner {
   width: 100%;
@@ -73,6 +73,7 @@ h1 {
 
 .header-banner h1{
   display: inline-block;
+  color: white;
 }
 
 .logo {
@@ -89,13 +90,53 @@ h1 {
   margin: 0 auto;
 }
 
+#notice, .alert {
+  width: 50%;
+  padding: 5px;
+  margin: 5px auto;
+  color: #58936E;
+  font-size: 1.5em;
+}
+
 .tile {
   width: 180px;
-  height: 240px;
-  border: 1px #58936E solid;
   float: left;
   margin: 20px 10px 0 10px;
-  border-radius: 10px;
+}
+
+.tile h3 {
+  /* color: #64a5d7; */
+  color: #555;
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+.tile-inner {
+  height: 220px;
+  border: 1px #58936E solid;
+  border-radius: 2px;
+  padding: 10px 10px;
+  position: relative;
+}
+
+a .tile-inner:hover {
+  background-color: rgba(197, 227, 193, .2);
+}
+
+.semi {
+  opacity: .4;
+}
+
+.tile-icon {
+  font-size: 3.5em;
+}
+
+.tile-author {
+  position: absolute;
+  bottom: 3px; 
+  opacity: .6;
+  font-size: .8em;
 }
 
 .panel {
@@ -103,6 +144,110 @@ h1 {
   padding: 40px;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.post-links {
+  clear: both; 
+  text-align: left;
+  margin: 0 0 0 15px;
+  padding-top: 20px;
+}
+
+
+.post-container, .info-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0px auto;
+  padding-top: 20px;
+}
+
+.post-container .edit-icons {
+  font-size: 1.5em;
+}
+
+.post-body {
+  text-align: left;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 1em;
+  line-height: 1.8em;
+  color: #555;
+}
+
+#infographic {
+  margin-top: 40px;
+}
+
+#infographic section,
+#case-study section {
+  padding: 10px 10px;
+}
+
+#infographic p,
+#case-study p {
+  font-size: 1em;
+  margin: 10px 0px 15px 0;
+  font-weight: 300;
+  color: #333;
+}
+
+#infographic h2,
+#case-study h2 {
+  padding: 40px 20px;
+  color: #555;
+}
+
+.left-text h3 {
+  color: #64a5d7;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  font-weight: 300;
+}
+
+.right-text h3 {
+  color: #64a5d7;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  font-weight: 300;
+  color: #4a995a;
+}
+
+.left-text, .right-text, .right-img, .left-img {
+  float: left;
+}
+
+#infographic .typcn {
+  
+}
+
+.left-img {
+  color: #4a995a;
+}
+
+.right-img {
+  color: #64a5d7;
+}
+
+.small-icon {
+  font-size: 18px;
+}
+
+.left-text, .right-text {
+  width: 66%;
+  text-align: left;
+  margin: 0 4%;
+}
+
+.right-img, .left-img {
+  width: 20%;
+  overflow: visible;
+  margin: 0 3%;
+  margin-top: -20px;
+  font-size: 120px;
+}
+
+.bordered-section-light {
+  background-color: #effbf2;
 }
 
 
