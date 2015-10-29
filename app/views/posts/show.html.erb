@@ -92,17 +92,6 @@
     <% end %>
   </div>
 
-
-    <% if user_signed_in? && current_user.admin? %>
-      <div class="edit-icons">
-        <%= link_to(edit_post_path(@post)) do %>
-          <span class="typcn typcn-pencil"></span>
-        <% end %>
-        <%= link_to(@post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-          <span class="typcn typcn-trash"></span>
-        <% end %>
-      </div>
-    <% end %>
     
     <%= link_to 'Back to Posts', posts_path %>
     <%#= link_to 'Edit', edit_post_path(@post) %>

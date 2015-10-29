@@ -33,7 +33,7 @@ gem 'rails_admin'
 
 gem "font-awesome-rails"
 
-gem 'foundation-wysihtml5-rails'
+gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
 
 
