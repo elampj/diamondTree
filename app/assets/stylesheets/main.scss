@@ -182,9 +182,15 @@ a .tile-inner:hover {
   text-align: left;
   margin-top: 50px;
   margin-bottom: 30px;
+  padding: 0 40px;
+}
+
+.post-body,
+.post-body p {
   font-size: 1em;
-  line-height: 1.8em;
-  color: #555;
+  line-height: 1.6em;
+  color: #333;
+  font-weight: 300;
 }
 
 #infographic {
@@ -261,6 +267,73 @@ a .tile-inner:hover {
 
 .bordered-section-light {
   background-color: #effbf2;
+}
+
+.fr-box {
+  margin-bottom: 40px;
+}
+
+.actions {
+  margin-top: 30px;
+}
+
+.icon-options-link {
+  font-size: .8em;
+  margin: 0 0 -10px 0;  
+}
+
+
+// 
+// 
+// Expanding Text CSS
+// 
+// 
+
+.expand-button, .less-button {
+  background-color: #eee;
+  /*display: inline-block;*/
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: #aaa;
+  font-size: 12px;
+  white-space: nowrap;
+  /*margin-left: 10px;*/
+}
+
+.expand-button:before {
+  content: '\2193 \0000a0 More';
+}
+
+.less-button:before {
+  content: '\2191 \0000a0 Less';
+}
+
+.expand-button.media-audio:after {
+  content: ' \1f508';
+  /*content: ' \25b6';*/
+}
+
+.expand-button.media-video:after {
+  content: ' \1f508';
+  /*content: ' \25b6';*/
+}
+
+.expand-button.media-video:after {
+  content: '\0000a0 \1f3a5';
+  /*content: ' \25b6';*/
+}
+
+.expand-button:hover,
+.less-button:hover {
+  opacity: .7;
+}
+
+.level {
+  margin: 35px 0px 20px 0px;
+  padding-left: 25px;
+  border-top: 1px #eee solid;
+  border-left: 1px #eee solid;
 }
 
 

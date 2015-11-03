@@ -24,7 +24,7 @@
   <% end %>
 
   <div class="post-body">
-    <%= h(@post.body).gsub(/\n/, '<br/>').html_safe %>
+    <%= @post.body.html_safe %>
   </div>
 
 
