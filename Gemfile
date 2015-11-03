@@ -35,6 +35,8 @@ gem "font-awesome-rails"
 
 gem "wysiwyg-rails", "2.0.0.pre.rc.3"
 
+gem 'jquery-turbolinks'
+
 
 
 # Use ActiveModel has_secure_password

@@ -231,8 +231,12 @@ a .tile-inner:hover {
   color: #4a995a;
 }
 
-.left-text, .right-text, .right-img, .left-img {
+.left-text, .left-img {
   float: left;
+}
+
+.right-text, .right-img {
+  float: right;
 }
 
 #infographic .typcn {
@@ -288,6 +292,9 @@ a .tile-inner:hover {
 // Expanding Text CSS
 // 
 // 
+.hidden {
+  display: none;
+}
 
 .expand-button, .less-button {
   background-color: #eee;

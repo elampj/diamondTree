@@ -34,59 +34,63 @@
     <% PostSection.all.each do |post_section| %>
       <% if post_section.post_id == @post.id %>
         <% if i % 2 == 0 %>
-          <section>
-            <div class="info-container">
-              <div class="left-text">
-                <h3><%= post_section.title %></h3>
-
-                <p><%= post_section.summary.html_safe %></p>
-                <!-- <span>Learn More: </span> -->
-              </div>
-              <div class="right-img">
-                <div class="typcn typcn typcn-<%= post_section.icon %>"></div>
-              </div>
-              
-              <div class="clearfix"></div>
-
-              <% if user_signed_in? && current_user.admin? %>
-                <%= link_to(edit_post_section_path(post_section)) do %>
-                  <span class="edit-icons typcn typcn-pencil"></span>
-                <% end %>
-                <%= link_to(post_section, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                  <span class="edit-icons typcn typcn-trash"></span>
-                <% end %> 
-              <% end %>
-              
-            </div>
-            
-          </section>
+          <% textClass = "left-text"
+             imgClass = "right-img"
+             divBackground = "bordered-section-normal"
+          %>
         <% else %>
-          <section>
-            <div class="info-container bordered-section-light">
-              <div class="left-img">
+           <% textClass = "right-text"
+              imgClass = "left-img"
+              divBackground = "bordered-section-light" 
+            %>
+        <% end %>
+        <section>
+          <div class="info-container <%= divBackground %>">
+            
+            <% if i % 2 != 0 %>
+              <div class="<%= imgClass %>">
                 <div class="typcn typcn typcn-<%= post_section.icon %>"></div>
               </div>
-              <div class="right-text">
-                <h3><%= post_section.title %></h3>
+            <% end %>
 
-                <p><%= post_section.summary.html_safe %></p>
-                <!-- <span>Learn More: </span> -->
+            <div class="<%= textClass %>">
+              <h3><%= post_section.title %></h3>
+              <div><%= post_section.summary.html_safe %></div>
+            </div>
+
+            <% if i % 2 == 0 %>
+              <div class="<%= imgClass %>">
+                <div class="typcn typcn typcn-<%= post_section.icon %>"></div>
               </div>
-              
-              <div class="clearfix"></div>
+            <% end %>
 
-              <% if user_signed_in? && current_user.admin? %>
-                <%= link_to(edit_post_section_path(post_section)) do %>
-                  <span class="edit-icons typcn typcn-pencil"></span>
-                <% end %>
-                <%= link_to(post_section, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                  <span class="edit-icons typcn typcn-trash"></span>
-                <% end %> 
-              <% end %>   
-              
-            </div> 
-          </section>
-        <% end %>
+
+
+            <% if post_section.additional_text.length > 0 %>
+              <div class="<%= textClass %> hidden  1-<%= i %>">
+                <%= post_section.additional_text.html_safe %>
+              </div>
+              <a id="1-<%= i %>" class="expand-button"></a>
+            <% end %>
+
+            <div class="clearfix"></div>
+
+
+            <% if user_signed_in? && current_user.admin? %>
+              <%= link_to(edit_post_section_path(post_section)) do %>
+                <span class="edit-icons typcn typcn-pencil"></span>
+              <% end %>
+              <%= link_to(post_section, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                <span class="edit-icons typcn typcn-trash"></span>
+              <% end %> 
+            <% end %>
+            
+          </div>
+          
+        </section>
+      
+        
+        
         <% i += 1 %>
       <% end %>
     <% end %>

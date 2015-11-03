@@ -5,14 +5,17 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th colspan="3"></th>
+      <th>Post ID</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @post_sections.each do |post_section| %>
+    <% @post_sections.order("post_id").each do |post_section| %>
       <tr>
         <td><%= post_section.title %></td>
+        <td><%= post_section.post_id %></td>
         <td><%= link_to 'Show', post_section %></td>
         <td><%= link_to 'Edit', edit_post_section_path(post_section) %></td>
         <td><%= link_to 'Destroy', post_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
