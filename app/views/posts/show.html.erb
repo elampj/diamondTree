@@ -55,23 +55,26 @@
 
             <div class="<%= textClass %>">
               <h3><%= post_section.title %></h3>
-              <div><%= post_section.summary.html_safe %></div>
+              <div><%= post_section.summary.html_safe %>
+               <% if post_section.additional_text.length > 0 %>
+                  <div class="hidden  1-<%= i %>">
+                    <%= post_section.additional_text.html_safe %>
+                  </div>
+                  <a id="1-<%= i %>" class="expand-button"></a>
+                <% end %>
+              </div>
             </div>
 
             <% if i % 2 == 0 %>
               <div class="<%= imgClass %>">
                 <div class="typcn typcn typcn-<%= post_section.icon %>"></div>
+
               </div>
             <% end %>
 
 
 
-            <% if post_section.additional_text.length > 0 %>
-              <div class="<%= textClass %> hidden  1-<%= i %>">
-                <%= post_section.additional_text.html_safe %>
-              </div>
-              <a id="1-<%= i %>" class="expand-button"></a>
-            <% end %>
+           
 
             <div class="clearfix"></div>
 

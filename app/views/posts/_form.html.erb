@@ -23,10 +23,30 @@
     </div>
     <div class="field">
       <%= f.label :body %><br>
-      <%= f.text_area :body, rows: "15", id: "eg-basic", class: "text-small" %>
+      <%= f.text_area :body, rows: "20", id: "eg-basic", class: "text-small" %>
     </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for post_section in @post.post_sections %>
+          <tr>
+            <td><%= post_section.title %></td>
+            <td><%= link_to 'Edit', edit_post_section_path(post_section) %></td>
+            <td><%= link_to 'Destroy', post_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+      
     <div class="actions">
       <%= f.submit class: "button" %>
+      <%= link_to "Cancel", :back, {:class=>"button"} %>
     </div>
   <% end %>
 

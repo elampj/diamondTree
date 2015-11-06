@@ -65,6 +65,10 @@ label {
   margin-top: 30px;
 }
 
+ol li {
+  text-align: left;
+}
+
 // Needs latest Compass, add '@import "compass"' to your scss
 // Permalink - use to edit and share this gradient:
 // http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+22,52b152+46,52b152+46,007dcc+100,002400+100
@@ -172,6 +176,7 @@ a .tile-inner:hover {
   max-width: 800px;
   margin: 0px auto;
   padding-top: 20px;
+  padding-bottom: 15px;
 }
 
 .post-container .edit-icons {
@@ -297,19 +302,32 @@ a .tile-inner:hover {
 }
 
 .expand-button, .less-button {
-  background-color: #eee;
+  // background-color: #eee;
   /*display: inline-block;*/
   cursor: pointer;
-  padding: 3px 6px;
+  padding: 6px 8px;
+  border: 1px solid;
   border-radius: 4px;
-  color: #aaa;
+  color: #777;
   font-size: 12px;
   white-space: nowrap;
+  opacity: .9;
   /*margin-left: 10px;*/
 }
 
+.left-text .expand-button {
+  color: #64a5d7;
+  border: 1px #64a5d7 solid;
+}
+
+.right-text .expand-button {
+  color:  #4a995a;
+  border: 1px #4a995a solid;
+}
+
+
 .expand-button:before {
-  content: '\2193 \0000a0 More';
+  content: '\2193 \0000a0 Read More';
 }
 
 .less-button:before {

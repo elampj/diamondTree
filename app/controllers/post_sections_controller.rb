@@ -42,12 +42,14 @@ class PostSectionsController < ApplicationController
   # PATCH/PUT /post_sections/1
   # PATCH/PUT /post_sections/1.json
   def update
+    session[:return_to] ||= request.referer
     respond_to do |format|
       if @post_section.update(post_section_params)
         @post_id = @post_section.post_id.to_s
         #@post_id = PostSection.find(params[:id]).post_id.to_s
         #format.html { redirect_to @post_section, notice: 'Post section was successfully updated.' }
-        format.html { redirect_to posts_path+'/'+@post_id, notice: 'Post section was successfully updated.' }
+        format.html { redirect_to posts_path+'/'+@post_id+'/edit/', notice: 'Post section was successfully updated.' }
+        #format.html { redirect_to session.delete(:return_to), notice: 'Post section was successfully updated.' }
         format.json { render :show, status: :ok, location: @post_section }
       else
         format.html { render :edit }
