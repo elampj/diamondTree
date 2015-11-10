@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_post_section_path(@post_section) %> |
-<%= link_to 'Back', post_sections_path %>
+<div class="post-container">
+  <div id="infographic">
+    <div class="left-img">
+      <div class="typcn typcn typcn-<%= @post_section.icon %>"></div>
+    </div>
+    <div class="right-text">
+      <h3><%= @post_section.title %></h3>
+      <div><%= @post_section.summary.html_safe %>
+       <% if @post_section.additional_text.length > 0 %>
+          <div class="hidden  1-1">
+            <%= @post_section.additional_text.html_safe %>
+          </div>
+          <a id="1-1" class="expand-button"></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <%= link_to 'Edit', edit_post_section_path(@post_section) %> |
+  <%= link_to 'Back', post_sections_path %>
+</div>

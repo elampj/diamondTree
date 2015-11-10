@@ -31,19 +31,21 @@
         <tr>
           <th>Title</th>
           <th colspan="2"></th>
+          <th>Priority</th>
         </tr>
       </thead>
-      <tbody class="sortable">
-        <% for post_section in @post.post_sections %>
-          <tr>
+      <tbody>
+        <% for post_section in @post.post_sections.order("priority asc") %>
+          <tr class="sortable-row" id="<%= post_section.id %>" data-pos="">
             <td><%= post_section.title %></td>
             <td><%= link_to 'Edit', edit_post_section_path(post_section) %></td>
             <td><%= link_to 'Destroy', post_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= post_section.priority %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-      
+    <%= link_to "Update Order", '#', :id => 'sort-button' %>
     <div class="actions">
       <%= f.submit class: "button" %>
       <%= link_to "Cancel", post_path(@post), {:class=>"button"} %>

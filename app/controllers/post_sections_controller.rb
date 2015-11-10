@@ -78,6 +78,6 @@ class PostSectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_section_params
-      params[:post_section].permit(:title, :icon, :summary, :additional_text, :post_id)
+      params[:post_section].permit(:title, :icon, :summary, :additional_text, :post_id, :priority)
     end
 end
