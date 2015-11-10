@@ -6,21 +6,60 @@ set_positions = function(){
     $('.sortable-row').each(function(i){
         $(this).attr("data-pos",i+1);
     });
+
+    $('#sort-button').removeClass('disable-anchor');
+    //ready();
 }
 
 ready = function(){
-    set_positions();
+
+    
+
+    //set_positions();
+
     $( '#sort-button' ).click(function (event) {
+
         updated_order = []
+        
         $( '.sortable-row' ).each(function( index ) {
 
             updated_order.push({ id: $(this).attr("id"), position: $( this ).attr("data-pos") });
             //console.log( index + ": " + $( this ).text() );
-            console.log(updated_order[index]);
+            //console.log(updated_order[index]);
             event.preventDefault(); // Prevent link from following its href
         });
+
+        $.ajax({
+            type: "PUT",
+            url: '/post_sections/sort',
+            data: { order: updated_order }
+        });
+
+        $(this).prev().fadeTo(100, 0.1).fadeTo(200, 1.0);
+
+        $('#sort-button').addClass('disable-anchor');
+
     });
 }
+
+$( document ).ready(function() {
+
+    $('#sort-button').prop('disabled', true);
+
+    $( '.up-priority' ).click(function (event) {
+        swapRow = $(this).closest('tr');
+        swapRow.insertBefore( swapRow.prev() );
+        set_positions(); 
+        swapRow.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    });
+
+    $( '.down-priority' ).click(function (event) {
+        swapRow = $(this).closest('tr');
+        swapRow.insertAfter( swapRow.next() );
+        set_positions();
+        swapRow.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    });
+ });   
 
 
 $(document).ready(ready);

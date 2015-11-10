@@ -70,6 +70,13 @@ class PostSectionsController < ApplicationController
     end
   end
 
+  def sort
+    params[:order].each do |key,value|
+      PostSection.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post_section

@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :post_sections
+  #resources :post_sections
   resources :posts
   resources :posts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root "posts#index"
+
+  resources :post_sections do
+    put :sort, on: :collection
+  end
 
 
 

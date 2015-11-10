@@ -134,6 +134,20 @@ a .tile-inner:hover {
   background-color: rgba(197, 227, 193, .2);
 }
 
+.disable-anchor{
+  pointer-events: none;
+  cursor: default;
+  opacity: .4;
+}
+
+.anchor-glove {
+  cursor: pointer;
+ }
+
+ .anchor-glove:hover {
+  color: #58936E;
+ }
+
 .semi {
   opacity: .4;
 }
