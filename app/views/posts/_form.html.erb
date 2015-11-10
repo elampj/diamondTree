@@ -33,7 +33,7 @@
           <th colspan="2"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="sortable">
         <% for post_section in @post.post_sections %>
           <tr>
             <td><%= post_section.title %></td>
@@ -46,7 +46,7 @@
       
     <div class="actions">
       <%= f.submit class: "button" %>
-      <%= link_to "Cancel", :back, {:class=>"button"} %>
+      <%= link_to "Cancel", post_path(@post), {:class=>"button"} %>
     </div>
   <% end %>
 
