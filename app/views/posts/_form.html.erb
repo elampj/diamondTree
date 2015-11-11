@@ -47,9 +47,12 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to "Update Order", '#', :id => 'sort-button', :class => 'disable-anchor' %>
+    <%#= link_to "+ New Section", new_post_post_section_path(@post), :id => 'new-post-section-button' %>
+    <%= link_to "+ New Section", new_post_section_path(:post_id => @post.id), :id => 'new-post-section-button' %>
+    <div class="clearfix"></div>
     <div class="actions">
-      <%= f.submit class: "button" %>
+      <%#= f.submit id: "submit-btn", class: "button" %>
+      <%= link_to "Update Post", '#', :id => 'submit-btn', :class => 'button' %>
       <%= link_to "Cancel", post_path(@post), {:class=>"button"} %>
     </div>
   <% end %>

@@ -7,17 +7,14 @@ set_positions = function(){
         $(this).attr("data-pos",i+1);
     });
 
-    $('#sort-button').removeClass('disable-anchor');
+    //$('#sort-button').removeClass('disable-anchor');
     //ready();
 }
 
-ready = function(){
-
+update_list_order = function(){
     
 
-    //set_positions();
-
-    $( '#sort-button' ).click(function (event) {
+    //$( '#sort-button' ).click(function (event) {
 
         updated_order = []
         
@@ -35,16 +32,14 @@ ready = function(){
             data: { order: updated_order }
         });
 
-        $(this).prev().fadeTo(100, 0.1).fadeTo(200, 1.0);
+        //$(this).prev().fadeTo(100, 0.1).fadeTo(200, 1.0);
 
-        $('#sort-button').addClass('disable-anchor');
+        //$('#sort-button').addClass('disable-anchor');
 
-    });
+   // });
 }
 
 $( document ).ready(function() {
-
-    $('#sort-button').prop('disabled', true);
 
     $( '.up-priority' ).click(function (event) {
         swapRow = $(this).closest('tr');
@@ -59,10 +54,16 @@ $( document ).ready(function() {
         set_positions();
         swapRow.fadeTo(100, 0.1).fadeTo(200, 1.0);
     });
+
+    $( '#submit-btn' ).click(function (event) {
+        event.preventDefault();
+        update_list_order();
+        $('form').submit();
+    });
  });   
 
 
-$(document).ready(ready);
+$( document ).ready(set_positions);
 /**
  * if using turbolinks
  */
