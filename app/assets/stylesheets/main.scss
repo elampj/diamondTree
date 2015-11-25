@@ -13,12 +13,12 @@ a {
   font-style: sans-serif;
 }
 
-nav {
-  width: 100%;
-  background-color: #000;
-  opacity: 1;
-  // position: fixed;
-  top: 0px;
+header {
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 60px 0px;
+  // background-image: url("/assets/banner2.jpg");
+  // background-size: cover;
   background: #b4ddb4; /* Old browsers */
   background:
     -webkit-linear-gradient(45deg, hsla(117, 42%, 36%, 1) 0%, hsla(117, 42%, 36%, 0) 70%),
@@ -30,14 +30,48 @@ nav {
     linear-gradient(135deg, hsla(203, 48%, 61%, 1) 10%, hsla(203, 48%, 61%, 0) 80%),
     linear-gradient(225deg, hsla(200, 62%, 59%, 1) 10%, hsla(200, 62%, 59%, 0) 80%),
     linear-gradient(315deg, hsla(210, 50%, 67%, 1) 100%, hsla(210, 50%, 67%, 0) 70%);
-    
-  // background: -moz-linear-gradient(left, #b4ddb4 0%, #52b152 0%, #3e7142 0%, #58936e 34%, #74b3ba 70%, #77BAE8 100%); /* FF3.6+ */
-  // background: -webkit-gradient(linear, left top, right top, color-stop(0%,#b4ddb4), color-stop(0%,#52b152), color-stop(0%,#3e7142), color-stop(34%,#58936e), color-stop(70%,#74b3ba), color-stop(100%,#77BAE8)); /* Chrome,Safari4+ */
-  // background: -webkit-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#77BAE8 100%); Chrome10+,Safari5.1+
-  // background: -o-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#77BAE8 100%); /* Opera 11.10+ */
-  // background: -ms-linear-gradient(left, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#77BAE8 100%); /* IE10+ */
-  // background: linear-gradient(to right, #b4ddb4 0%,#52b152 0%,#3e7142 0%,#58936e 34%,#74b3ba 70%,#77BAE8 100%); /* W3C */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#71afd0',GradientType=1 );
+
+}
+
+nav {
+    width: 100%;
+    background-color: #000;
+    opacity: .78;
+}
+
+header img {
+  width: 90px;
+  margin-bottom: 5px;
+}
+
+
+header h1 {
+  font-size: 2.5em;
+  font-weight: 200;
+  margin-bottom: 20px;
+  color: white;
+
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 400;
+  line-height: 1.2em;
+  margin: 10px 0px;
+  /*color: #4a995a;*/
+  color: #64a5d7;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  /* color: #4a995a; */
+}
+
+h4 {
+  font-size: 1.2em;
+  line-height: 1.4em;
 }
 
 nav ul {
@@ -47,7 +81,7 @@ nav ul {
 
 nav ul li {
   display: inline-block;
-  margin: 10px;
+  margin: 4px 10px;
 }
 
 nav a {
@@ -69,14 +103,33 @@ ol li {
   text-align: left;
 }
 
+section {
+  padding: 70px 30px;
+}
+
+audio {
+  display: inline-block;
+  margin-top: 10px;
+  width: 160px;
+  background-color: white;
+  opacity: .5;
+}
+
 // Needs latest Compass, add '@import "compass"' to your scss
 // Permalink - use to edit and share this gradient:
 // http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+22,52b152+46,52b152+46,007dcc+100,002400+100
 
+.some-headroom {
+  margin-top: 35px;
+}
+
+.breathing-room {
+  margin: 15px 0px;
+}
 
 .header-banner {
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1px 10px;
 }
@@ -97,13 +150,17 @@ ol li {
 
 .tile-holder {
   max-width: 810px;
-  margin: 0 auto;
+  margin: 0 auto 35px auto;
+}
+
+.notice-holder {
+  // margin-top: 25px;
 }
 
 #notice, .alert {
   width: 50%;
-  padding: 5px;
-  margin: 5px auto;
+  padding: 0px;
+  margin: 0px auto;
   color: #58936E;
   font-size: 1.5em;
 }
@@ -116,22 +173,25 @@ ol li {
 
 .tile h3 {
   /* color: #64a5d7; */
-  color: #555;
-  font-size: 1.1em;
+  color: #333;
+  font-size: .95em;
   font-weight: 400;
   line-height: 1.2em;
 }
 
 .tile-inner {
-  height: 220px;
-  border: 1px #58936E solid;
+  height: 200px;
+  //border: 1px #58936E solid;
+  border: 1px #eee solid;
   border-radius: 2px;
   padding: 10px 10px;
   position: relative;
+  //background-color: rgba(224, 255, 242, 1.0);
+  background-color: white;
 }
 
 a .tile-inner:hover {
-  background-color: rgba(197, 227, 193, .2);
+  background-color: rgba(197, 227, 193, .4);
 }
 
 .disable-anchor{
@@ -157,8 +217,11 @@ a .tile-inner:hover {
 }
 
 .tile-author {
+  display: block;
   position: absolute;
-  bottom: 3px; 
+  width: 90%;
+  text-align:center;
+  bottom: 8px; 
   opacity: .6;
   font-size: .8em;
 }

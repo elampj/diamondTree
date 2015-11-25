@@ -17,10 +17,11 @@
 
     <%= render 'layouts/header' %>
 
-    <div class="notice"><%= notice %></div>
-    <div class="alert"><%= alert %></div>
+    <div class="notice-holder">
+      <div class="notice"><%= notice %></div>
+      <div class="alert"><%= alert %></div>
+    </div>
 
     <%= yield %>
-    <%= render 'layouts/froalaScript' %>
   </body>
 </html>

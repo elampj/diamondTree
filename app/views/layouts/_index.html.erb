@@ -1,0 +1,138 @@
+
+
+  
+  <header id="home">
+    <img src="/assets/logo2.png" alt="Diamond Tree Logo">
+    <h1>Diamond Tree</h1>
+    <h4>Strategy, leadership, and technology consulting for nonprofits</h4>
+  </header>
+
+<!--  <section id="problem">
+    <h2>The Problem</h2>
+    <p>Nonprofits and other small organizations often lack the resources and expertise that for-profit organizations enjoy. As a result, many nonprofits are operating much less efficiently and effectively than they otherwise might.</p>
+  </section> -->
+
+  <!-- <section id="mission" class="white-section">
+    <h2>Our Mission</h2>
+
+    <p>We come from the nonprofit world, and we very much believe in investing our time and energy into making the world a better place.</p>
+    <p>Our mission is to bring top talent to bear in support of nonprofits, so that these organizations can realize their full potential.</p>
+  </section> -->
+
+
+<!--   <section id="big-quote" class="bordered-section">
+    <h4>We believe that with the right support, many nonprofits can dramatically increase the positive impact that they are having.</h4>
+  </section> -->
+
+  <section id="services" class="white-section">
+    <div class="services-container">
+      <h2>Our Services</h2>
+      <p>We believe in the "honest mechanic" model of service. We strive to provide maximum value to our clients, and we operate with the highest levels of integrity and transparency.</p>
+      <div class="services-description">
+
+        <img src="/assets/stratIcon.png" alt="strategy icon"/>
+
+        <h3>Strategy/Leadership Consulting</h3>
+
+        <p>As with any other organization, strategy and leadership are critical to the success of all nonprofits. However, it is in this area more than any other that most nonprofits need help.</p>
+        <p class="mobile-hide">We are experts at helping organizations identify and articulate their core values. This is an essential step, because these values are identified and understood, they inform all other ogranizational decisions.</p>
+        <p>Clarity of values leads to the development of a clear organizational mission.  A clear mission then informs the development of explicit strategies. And while sound strategies are critically important, ultimate success or failure rests on implementation details. We have expertise not only in crafting strategy, but in implementing it as well.</p>
+        <p class="mobile-hide">While this may sound simple in principle, it can be extraordinarily difficult in practice. We have deep experience guiding nonprofits from values, to mission, to strategy, and finally to operationalizing that strategy.</p>
+
+      </div>
+      <div class="services-description">
+
+        <img src="/assets/techIcon.png" alt="strategy icon"/>
+
+        <h3>Technology Consulting</h3>
+
+        <p>Technology projects such as websites, mobile apps, and promotional videos are critical to the success of most nonprofits. However, most cannot afford full-time employees with the appropriate level of technical expertise.</p>
+        <p class="mobile-hide">Unfortunately, many technology vendors take advantage of this knowledge gap, and sell services of inferior quality, or services that their clients do not need.</p>
+        <p class="mobile-hide">This is where we come in. We have deep levels of expertise guiding a wide variety of technology projects. We are not only "honest mechanics" ourselves, we have a large network of technology vendors that share our values. We can also easily identify those qualities in vendors that we are evaluating for the first time.</p>
+        <p>We can guide you through the technology design and development process. We can help identify the projects that are appropriate for your organizational goals, and we can make sure you're getting the maximum value for the money that you spend.</p>
+        <!-- <a href="info.html"><p><span class="typcn typcn-document small-icon"></span> Guide: How to be a good client</p></a> -->
+      </div>
+
+      <div class="clearfix"></div>
+      <h3 class="emailus">Not sure if we're a good fit? Our initial consultations are free.<br><br>Just email us at <span class="email-address">info@diamondtree.org</span> to schedule one.</h3>
+    </div>
+  </section>
+
+  <section id="projects" class="bordered-section">
+    <div id="icon-container">
+      <h2>Example Projects</h2>
+      <div class="client-logo">
+        <a href="mdanderson.html">
+          <img src="/assets/mdanderson.png" alt="mdanderson logo"/>
+          <p class="client-name">MD Anderson Cancer Center</p>
+          <p class="sub-title-p">Virtual Training Environment for Physicians</p>
+        </a>
+      </div>
+
+      <div class="client-logo">
+        <a href="stuttering-institute.html">
+          <img src="/assets/stuttering.png" alt="stuttering institute logo"/>
+          <p class="client-name">UT Austin Stuttering Institute</p>
+          <p class="sub-title-p">Web Application to Train Clinicians</p>
+        </a>
+      </div>
+
+      <div class="client-logo">
+        <a href="catch.html">
+          <img src="/assets/catch.png" alt="Catch Global logo"/>
+          <p class="client-name">CATCH Global Foundation</p>
+          <p class="sub-title-p">Web Application for Digital Curriculum</p>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </section>
+
+<!--  <section id="divider" class="bordered-section">
+
+  </section> -->
+
+  <section id="resources" class="white-section">
+    <%= link_to posts_path do %>
+    <h2>Resources</h2>
+    <% end %>
+    <div class="tile-holder">
+      <%= render 'layouts/topposts' %>
+    </div>
+    <%= link_to 'See all resources', posts_path, class: "button" %>
+  </section>  
+
+  <!-- <section id="resources" class="white-section">
+     <div class="team-container">
+      <h2>Leadership Team</h2>
+      <div class="services-description">
+
+        <img src="/assets/justin.jpg" alt="Justin Elam Picture"/>
+
+        <h3>Justin Elam, Co-founder</h3>
+        <h5>Strategy and Leadership</h5>
+
+        <p>Justin has developed his expertise in strategy and leadership in over 20 years of working with nonprofit organizations.</p>
+        <p>He has worked with organizations both big and small across a wide variety of industries. He has helped nonprofits that are high functioning, and those in need of significant help.</p>
+        
+      </div>
+      <div class="services-description">
+
+        <img src="/assets/peter.jpg" alt="Peter Elam Picture"/>
+
+        <h3>Peter Elam, Co-founder</h3>
+        <h5>Technology</h5>
+
+        <p>Peter has over 15 years of experience managing the development of an extremely wide variety of technology projects.</p>
+        <p>He works with organizational leadership to identify appropriate projects, and is then able to guide all aspects of technology procurement, design, and development. See some of his personal projects on his <a href="http://peterelam.com" target="_blank">portfolio site</a>.</p>
+      </div>
+
+      <div class="clearfix"></div>
+      <h4 class="partner-description">In addition to the leadership team, we draw upon a large network of talented individuals to support our clients as appropriate.</h4>
+    </div> 
+  </section> -->
+
+  <section id="contact" class="bordered-section">
+    <h2>Contact Us</h2>
+    <h3 class="emailus">Not sure if we're a good fit? Our initial consultations are free.<br><br> Just email us at <span class="email-address">info@diamondtree.org</span> to schedule one, or to ask us any other questions that you have.</h3>
+  </section>

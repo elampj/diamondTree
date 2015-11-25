@@ -1,12 +1,8 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<% maxPosts = 4 %>
 
-<div class="tile-holder">
-  <h2 class="some-headroom">Resources</h2>
-  <div class="clearfix"></div>
-  
-  <% @posts.each do |post| %>
+  <% Post.all.each do |post| %>
     
-    <% if user_signed_in? && current_user.access_level >= post.restricted_level || post.restricted_level <= 0 %>
+    <% if user_signed_in? && current_user.access_level >= post.restricted_level && maxPosts > 0 || post.restricted_level <= 0 && maxPosts > 0 %>
 
       <%= link_to(post) do %>
         <div class="tile">
@@ -29,13 +25,14 @@
           <% end %>
         </div>
       <% end %>
+      <% maxPosts -=1 %>
     <% end %>
 
   <% end %>
     
-  <% @posts.each do |post| %>
+  <% Post.all.each do |post| %>
 
-    <% if user_signed_in? && current_user.access_level < post.restricted_level || !user_signed_in? && post.restricted_level > 0 %>
+    <% if user_signed_in? && current_user.access_level < post.restricted_level && maxPosts > 0 || !user_signed_in? && post.restricted_level > 0 && maxPosts > 0 %>
       <%= link_to(new_user_session_path) do %>
         <div class="tile semi">
           <div class="tile-inner">
@@ -48,14 +45,14 @@
           </div>
         </div>
       <% end %> 
+      <% maxPosts -=1 %>
     <% end %>
-
   <% end %>
+
+  <div class="clearfix"></div>
 
   <% if user_signed_in? && current_user.admin? %>
     <div class="post-links">
       <%= link_to 'New Post', new_post_path, class: "button" %>
     </div>
   <% end %>
-</div>
-
