@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root "pages#index"
+  get '/catch', to: 'pages#catch'
+  get '/mdanderson', to: 'pages#mdanderson'
+  get '/stutteringinstitute', to: 'pages#stutteringinstitute'
 
   resources :post_sections do
     put :sort, on: :collection
