@@ -23,7 +23,7 @@
     <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>">
       <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
       <div class="clearfix"></div>
-<% if false %>
+
       <% @posts.each do |post| %>
         
         <% if user_signed_in? && current_user.access_level >= post.restricted_level && post.post_type_id == p.id || post.restricted_level <= 0 && post.post_type_id == p.id %>
@@ -53,7 +53,7 @@
         <% end %>
 
       <% end %>
-        
+        <% if false %>
       <% @posts.each do |post| %>
 
         <% if user_signed_in? && current_user.access_level < post.restricted_level && post.post_type_id == p.id || !user_signed_in? && post.restricted_level > 0 && post.post_type_id == p.id %>
