@@ -1,6 +1,6 @@
-<% maxPosts = 4 %>
+<% maxPosts = 8 %>
 
-  <% Post.all.each do |post| %>
+  <% Post.all.order('created_at DESC').each do |post| %>
     
     <% if user_signed_in? && current_user.access_level >= post.restricted_level && maxPosts > 0 || post.restricted_level <= 0 && maxPosts > 0 %>
 

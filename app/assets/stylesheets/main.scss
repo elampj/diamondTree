@@ -131,6 +131,10 @@ audio {
   margin: 15px 0px;
 }
 
+.top-breathing {
+  margin-top: 20px;
+}
+
 .header-banner {
   width: 100%;
   max-width: 900px;
@@ -153,8 +157,9 @@ audio {
 }
 
 .tile-holder {
-  max-width: 810px;
+  max-width: 850px;
   margin: 0 auto 35px auto;
+  padding: 0 20px;
 }
 
 .notice-holder {
@@ -198,6 +203,31 @@ a .tile-inner:hover {
   background-color: rgba(197, 227, 193, .4);
 }
 
+ul.filter-list {
+  list-style: none;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+ul.filter-list li {
+  display: inline-block;
+  margin: 0px 3px;
+}
+
+li.filter-list-item {
+  color: #64a5d7;
+  cursor: pointer;
+}
+
+li.filter-list-item:hover {
+  opacity: .6;
+}
+
+li.filter-list-item-selected {
+  color: #333;
+  cursor: default;
+}
+
 .disable-anchor{
   pointer-events: none;
   cursor: default;
@@ -218,16 +248,30 @@ a .tile-inner:hover {
 
 .tile-icon {
   font-size: 3.5em;
+  margin-bottom: -8px;
 }
 
-.tile-author {
+.tile-author, .post-type-title{
   display: block;
   position: absolute;
   width: 90%;
   text-align:center;
-  bottom: 8px; 
+   
   opacity: .6;
   font-size: .8em;
+}
+
+.tile-author {
+  bottom: 8px;
+}
+
+.post-type-title {
+  top: 2px;
+}
+
+.post-type-header {
+  padding: 0;
+  margin: 35px 0px 0px 10px;
 }
 
 .panel {

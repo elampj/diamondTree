@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106120420) do
+ActiveRecord::Schema.define(version: 20151128175021) do
 
   create_table "post_sections", force: :cascade do |t|
     t.string   "title"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20151106120420) do
     t.integer  "priority"
   end
 
+  create_table "post_types", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "plural"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "icon"
@@ -32,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151106120420) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "restricted_level"
+    t.integer  "post_type_id"
   end
 
   create_table "users", force: :cascade do |t|

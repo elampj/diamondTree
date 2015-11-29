@@ -4,58 +4,143 @@
   <h2 class="some-headroom">Resources</h2>
   <div class="clearfix"></div>
   
-  <% @posts.each do |post| %>
-    
-    <% if user_signed_in? && current_user.access_level >= post.restricted_level || post.restricted_level <= 0 %>
+  <ul class="filter-list">
+    <li class="filter-list-item-selected">All</li>
+    <% PostType.all.each do |p| %>
+      <span> | </span>
+      <li class="filter-list-item"><%= p.plural %></li>
+    <% end %>
+  </ul>
 
-      <%= link_to(post) do %>
-        <div class="tile">
-          <div class="tile-inner">
-            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
-            <h3><%= post.title %></h3>
-            <span class="tile-author">by: <%= post.user.fname %></span>
-    <!--         <p><%= post.body %></p> -->
-          </div>
-          <% if user_signed_in? && current_user.admin? %>
-            <%= link_to(post) do %>
-              <span class="typcn typcn-eye"></span>
-            <% end %> 
-            <%= link_to(edit_post_path(post)) do %>
-              <span class="typcn typcn-pencil"></span>
-            <% end %>
-            <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-              <span class="typcn typcn-trash"></span>
-            <% end %>
+  <div class="tile-type-sections all">
+    <h4 class="post-type-header">Most Recent</h4>
+    <div class="clearfix"></div>
+    <%= render 'layouts/recentposts' %>
+  </div>
+
+  <% PostType.all.each do |p| %>
+    <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>">
+      <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
+      <div class="clearfix"></div>
+
+      <% @posts.each do |post| %>
+        
+        <% if user_signed_in? && current_user.access_level >= post.restricted_level && post.post_type_id == p.id || post.restricted_level <= 0 && post.post_type_id == p.id %>
+
+          <%= link_to(post) do %>
+            <div class="tile">
+              <div class="tile-inner">
+                <div class="post-type-title"><%= post.post_type.name %></div>
+                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+                <h3><%= post.title %></h3>
+                <span class="tile-author">by: <%= post.user.fname %></span>
+        <!--         <p><%= post.body %></p> -->
+              </div>
+              <% if user_signed_in? && current_user.admin? %>
+                <%= link_to(post) do %>
+                  <span class="typcn typcn-eye"></span>
+                <% end %> 
+                <%= link_to(edit_post_path(post)) do %>
+                  <span class="typcn typcn-pencil"></span>
+                <% end %>
+                <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                  <span class="typcn typcn-trash"></span>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
+        <% end %>
+
+      <% end %>
+        
+      <% @posts.each do |post| %>
+
+        <% if user_signed_in? && current_user.access_level < post.restricted_level && post.post_type_id == p.id || !user_signed_in? && post.restricted_level > 0 && post.post_type_id == p.id %>
+          <%= link_to(new_user_session_path) do %>
+            <div class="tile semi">
+              <div class="tile-inner">
+                <div class="post-type-title"><%= post.post_type.name %></div>
+                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+                <h3><%= post.title %></h3>
+                <div class="typcn typcn-lock-closed not-semi"></div>
+                <div>Member Content</div>
+                <!-- <span class="tile-author">by: <%= post.user.fname %></span> -->
+        <!--         <p><%= post.body %></p> -->
+              </div>
+            </div>
+          <% end %> 
+        <% end %>
+
+      <% end %>
+      
+      <div class="clearfix"></div>
+
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="post-links">
+          <%= link_to 'New Post', new_post_path, class: "button" %>
         </div>
       <% end %>
-    <% end %>
-
-  <% end %>
-    
-  <% @posts.each do |post| %>
-
-    <% if user_signed_in? && current_user.access_level < post.restricted_level || !user_signed_in? && post.restricted_level > 0 %>
-      <%= link_to(new_user_session_path) do %>
-        <div class="tile semi">
-          <div class="tile-inner">
-            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
-            <h3><%= post.title %></h3>
-            <div class="typcn typcn-lock-closed not-semi"></div>
-            <div>Member Content</div>
-            <!-- <span class="tile-author">by: <%= post.user.fname %></span> -->
-    <!--         <p><%= post.body %></p> -->
-          </div>
-        </div>
-      <% end %> 
-    <% end %>
-
-  <% end %>
-
-  <% if user_signed_in? && current_user.admin? %>
-    <div class="post-links">
-      <%= link_to 'New Post', new_post_path, class: "button" %>
     </div>
-  <% end %>
+    <% end %>
+    
 </div>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $( "ul.filter-list li" ).click(function() {
+
+      //$(this).siblings().children().each(function( index ) {
+        //$(this).next().children().each(function( index ) {
+
+        var currentItem = $(this).text().toLowerCase().split(" ").join("");
+        //$('.'+currentItem).each(function( index ) {  
+        //$(this).siblings().each(function( index ) { 
+        $(this).removeClass('filter-list-item');
+        $(this).addClass('filter-list-item-selected');
+        //$(this).removeClass('filter-list-item-selected');
+        $(this).siblings().removeClass('filter-list-item');
+        $(this).siblings().removeClass('filter-list-item-selected');
+        $(this).siblings().addClass('filter-list-item');
+        
+        // });
+        if (currentItem == 'all' )
+        {
+          $( '.tile-type-sections' ).show();
+        }
+        else
+        {
+          $( '.tile-type-sections' ).hide();
+          $( 'div.'+currentItem).show();
+        }
+
+
+          // if ($( this ).hasClass('filter-list-item'))
+          // { 
+          //   $( this ).removeClass('filter-list-item');
+          //   $( this ).addClass('filter-list-item-selected');
+          // }
+          // else if ($( this ).hasClass('filter-list-item-selected'))
+          // { 
+          //   $( this ).removeClass('filter-list-item-selected');
+          //   $( this ).addClass('filter-list-item');
+          // }       
+     // });
+
+      // if ($( this ).hasClass('expand-button'))
+      // {
+      //   //$( this ).removeClass('expand-button');
+      //   //$( this ).addClass('less-button');
+      //   $( this ).addClass('hidden');
+        
+      // }
+      // else if ($( this ).hasClass('less-button'))
+      // {
+      //   $( this ).removeClass('less-button');
+      //   $( this ).addClass('expand-button');
+      //   //$( this ).html('&darr; More');
+      // }
+
+    });
+  });
+</script>
 
