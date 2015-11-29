@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @post_types = PostTypes.all
+    #@post_types = PostTypes.all
   end
 
   # GET /posts/1
