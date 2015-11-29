@@ -18,6 +18,7 @@
     <%= render 'layouts/recentposts' %>
   </div>
 
+  <% if false %>
   <% PostType.all.each do |p| %>
     <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>">
       <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
@@ -81,8 +82,9 @@
         </div>
       <% end %>
     </div>
-    <% end %>
-    
+  <% end %>
+  <% end %>
+  
 </div>
 
 <script type="text/javascript">
