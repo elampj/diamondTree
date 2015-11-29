@@ -1,36 +1,16 @@
-<% if false  %>
-  <nav>
-    <div class="header-banner">
-      <%= link_to root_path do %>
-        <div class = "left">
-          <img class="logo" src="/assets/logo2.png" alt="Diamond Tree Logo"/>
-          <h1>Diamond Tree Resources</h1>
-        </div>
-      <% end %>
-      <ul class="right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Posts", posts_path %></li>
-        <% if user_signed_in?  %>
-          <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, class: "sign-out-link", method: :delete %></li>
-          <li><%= current_user.fname %></li>
-          <% if current_user.admin  %>
-            <li><%= link_to "Admin", rails_admin.dashboard_path %></li>
-          <% end %>
-        <% else %>
-          <li><%= link_to "Sign in", new_user_session_path, class: "sign-out-link" %></li>
-        <% end %>     
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-  </nav>
-<% end %>
 
 <nav>
   <div class="header-banner">
 
-    <ul class="left">
-      <li><%= link_to "Home", root_path %></li>
+    <div class="left banner-logo">
+      <%= link_to root_path do %>
+          <img class="logo" src="/assets/logo2.png" alt="Diamond Tree Logo"/>
+          <h1>Diamond Tree</h1>
+      <% end %>
+    </div>
+
+    <ul class="right">
+      <!-- <li><%= link_to "Home", root_path %></li> -->
   <!--      <li><a href="#problem">The Problem</a></li> -->
       <!-- <li><%#= link_to "Mission", root_path(:anchor => "mission") %></li> -->
       <li><%= link_to "Services", root_path(:anchor => "services") %></li>
@@ -38,20 +18,20 @@
       <li><%= link_to "Resources", root_path(:anchor => "resources") %></li>
   <!--      <li><a href="#team">Team</a></li> -->
       <li><%= link_to "Contact", root_path(:anchor => "contact") %></li>
-    </ul> 
 
-    <ul class="right">
       <% if user_signed_in?  %>
+        <li>| <%= current_user.fname %></li>
         <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, class: "sign-out-link", method: :delete %></li>
-        <li><%= current_user.fname %></li>
         <% if current_user.admin  %>
           <li><%= link_to "Admin", rails_admin.dashboard_path %></li>
         <% end %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign in", new_user_session_path, class: "sign-out-link" %></li>
-      <% end %>     
-    </ul>
+      <% end %>   
+
+    </ul> 
+
     <div class="clearfix"></div>
   </div>
 </nav>
