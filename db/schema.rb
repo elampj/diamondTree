@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20151129170721) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "restricted_level", default: 0
-    t.integer  "post_type_id"
+    t.integer  "post_type_id",     default: 1
   end
 
   create_table "users", force: :cascade do |t|
