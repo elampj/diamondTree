@@ -168,9 +168,15 @@ audio {
 }
 
 .tile-holder {
-  max-width: 850px;
+  max-width: 855px;
   margin: 0 auto 35px auto;
   padding: 0 20px;
+  text-align: left;
+}
+
+.resources-top {
+  text-align: center;
+  margin: 0px auto;
 }
 
 .notice-holder {
@@ -187,8 +193,10 @@ audio {
 
 .tile {
   width: 180px;
-  float: left;
+  //float: left;
+  display: inline-block;
   margin: 20px 10px 0 10px;
+  text-align: center;
 }
 
 .tile h3 {
@@ -528,5 +536,24 @@ li.filter-list-item-selected {
   border-top: 1px #eee solid;
   border-left: 1px #eee solid;
 }
+
+@media screen and (max-width: 915px) {
+  .tile-holder {
+    max-width: 650px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .tile-holder {
+    max-width: 445px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .tile-holder {
+    max-width: 240px;
+  }
+}
+
 
 

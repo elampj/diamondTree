@@ -1,16 +1,19 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <div class="tile-holder">
-  <h2 class="some-headroom">Resources</h2>
-  <div class="clearfix"></div>
-  
-  <ul class="filter-list">
-    <li class="filter-list-item-selected">All</li>
-    <% PostType.all.each do |p| %>
-      <span> | </span>
-      <li class="filter-list-item"><%= p.plural %></li>
-    <% end %>
-  </ul>
+
+  <div class="resources-top">
+    <h2 class="some-headroom">Resources</h2>
+    <div class="clearfix"></div>
+    
+    <ul class="filter-list">
+      <li class="filter-list-item-selected">All</li>
+      <% PostType.all.each do |p| %>
+        <span> | </span>
+        <li class="filter-list-item"><%= p.plural %></li>
+      <% end %>
+    </ul>
+  </div>
 
   <div class="tile-type-sections all">
     <h4 class="post-type-header">Most Recent</h4>

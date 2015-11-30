@@ -1,6 +1,6 @@
 class PostSectionsController < ApplicationController
   before_action :set_post_section, only: [:show, :edit, :update, :destroy]
-
+  before_filter :verify_is_admin, only: [:index, :new, :edit, :create, :destroy]
   
 
   # GET /post_sections
@@ -86,5 +86,9 @@ class PostSectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_section_params
       params[:post_section].permit(:title, :icon, :summary, :additional_text, :post_id, :priority)
+    end
+
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
     end
 end
