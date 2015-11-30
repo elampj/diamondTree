@@ -23,9 +23,6 @@
     </div>
     <div class="field">
       <%= f.label :post_type %><br>
-      <%
-        @post.post_type_id = params[ :post_type_id ]
-      %>
       <%= collection_select(:post, :post_type_id, PostType.all, :id, :name) %>
     </div>
     <div class="field">
@@ -60,7 +57,7 @@
     <div class="actions">
       <%#= f.submit id: "submit-btn", class: "button" %>
       <%= link_to "Update Post", '#', :id => 'submit-btn', :class => 'button' %>
-      <%= link_to "Cancel", :back, {:class=>"button"} %>
+      <%= link_to "Cancel", posts_path, {:class=>"button"} %>
     </div>
   <% end %>
 

@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsTypeController < ApplicationController
   
   # GET /posts
   # GET /posts.json
