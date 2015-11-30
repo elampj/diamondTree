@@ -30,7 +30,6 @@ header {
     linear-gradient(135deg, hsla(203, 48%, 61%, 1) 10%, hsla(203, 48%, 61%, 0) 80%),
     linear-gradient(225deg, hsla(200, 62%, 59%, 1) 10%, hsla(200, 62%, 59%, 0) 80%),
     linear-gradient(315deg, hsla(210, 50%, 67%, 1) 100%, hsla(210, 50%, 67%, 0) 70%);
-
 }
 
 nav {
@@ -216,6 +215,16 @@ audio {
   position: relative;
   //background-color: rgba(224, 255, 242, 1.0);
   background-color: white;
+    background:
+    -webkit-linear-gradient(45deg, hsla(117, 42%, 36%, .03) 0%, hsla(117, 42%, 36%, 0) 70%),
+    -webkit-linear-gradient(315deg, hsla(203, 48%, 61%, .03) 10%, hsla(203, 48%, 61%, 0) 80%),
+    -webkit-linear-gradient(225deg, hsla(200, 62%, 59%, .03) 10%, hsla(200, 62%, 59%, 0) 80%),
+    -webkit-linear-gradient(135deg, hsla(210, 50%, 67%, .03) 100%, hsla(210, 50%, 67%, 0) 70%);
+  background:
+    linear-gradient(45deg, hsla(117, 42%, 36%, .03) 0%, hsla(117, 42%, 36%, 0) 70%),
+    linear-gradient(135deg, hsla(203, 48%, 61%, .03) 10%, hsla(203, 48%, 61%, 0) 80%),
+    linear-gradient(225deg, hsla(200, 62%, 59%, .03) 10%, hsla(200, 62%, 59%, 0) 80%),
+    linear-gradient(315deg, hsla(210, 50%, 67%, .03) 100%, hsla(210, 50%, 67%, 0) 70%);
 }
 
 a .tile-inner:hover {
