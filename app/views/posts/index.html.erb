@@ -1,21 +1,21 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
+<div class="resources-top">
+  <h2 class="some-headroom">Resources</h2>
+  <div class="clearfix"></div>
+  
+  <ul class="filter-list">
+    <li class="filter-list-item-selected">All</li>
+    <% PostType.all.each do |p| %>
+      <span> | </span>
+      <li class="filter-list-item"><%= p.plural %></li>
+    <% end %>
+  </ul>
+</div>
+
 <div class="tile-holder">
 
-  <div class="resources-top">
-    <h2 class="some-headroom">Resources</h2>
-    <div class="clearfix"></div>
-    
-    <ul class="filter-list">
-      <li class="filter-list-item-selected">All</li>
-      <% PostType.all.each do |p| %>
-        <span> | </span>
-        <li class="filter-list-item"><%= p.plural %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="tile-type-sections all">
+  <div class="tile-type-sections all-section">
     <h4 class="post-type-header">Most Recent</h4>
     <div class="clearfix"></div>
     <%= render 'layouts/recentposts' %>
@@ -23,7 +23,7 @@
 
   
   <% PostType.all.each do |p| %>
-    <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>">
+    <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>-section">
       <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
       <div class="clearfix"></div>
 
@@ -63,7 +63,7 @@
             <div class="tile semi">
               <div class="tile-inner">
                 <div class="post-type-title"><%= post.post_type.name %></div>
-                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>-section'></div>
                 <h3><%= post.title %></h3>
                 <div class="typcn typcn-lock-closed not-semi"></div>
                 <div>Member Content</div>
@@ -94,7 +94,7 @@
       //$(this).siblings().children().each(function( index ) {
         //$(this).next().children().each(function( index ) {
 
-        var currentItem = $(this).text().toLowerCase().split(" ").join("");
+        var currentItem = $(this).text().toLowerCase().split(" ").join("") + '-section';
         //$('.'+currentItem).each(function( index ) {  
         //$(this).siblings().each(function( index ) { 
         $(this).removeClass('filter-list-item');
@@ -105,7 +105,7 @@
         $(this).siblings().addClass('filter-list-item');
         
         // });
-        if (currentItem == 'all' )
+        if (currentItem == 'all-section' )
         {
           $( '.tile-type-sections' ).show();
         }
