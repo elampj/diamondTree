@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130201505) do
+ActiveRecord::Schema.define(version: 20151201180840) do
 
   create_table "access_levels", force: :cascade do |t|
     t.integer  "level"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20151130201505) do
     t.string   "icon"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "restricted_level", default: 0
-    t.integer  "post_type_id",     default: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "post_type_id",    default: 1
+    t.integer  "access_level_id", default: 1
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20151130201505) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.integer  "access_level",           default: 1
+    t.integer  "access_level_id",        default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

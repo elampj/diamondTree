@@ -2,7 +2,7 @@
 
   <% Post.all.each do |post| %>
     
-    <% if user_signed_in? && current_user.access_level >= post.restricted_level && maxPosts > 0 || post.restricted_level <= 0 && maxPosts > 0 %>
+    <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && maxPosts > 0 || post.access_level.level <= 0 && maxPosts > 0 %>
 
       <%= link_to(post) do %>
         <div class="tile">
@@ -33,17 +33,19 @@
     
   <% Post.all.each do |post| %>
 
-    <% if user_signed_in? && current_user.access_level < post.restricted_level && maxPosts > 0 || !user_signed_in? && post.restricted_level > 0 && maxPosts > 0 %>
+    <% if user_signed_in? && current_user.access_level.level < post.access_level.level && maxPosts > 0 || !user_signed_in? && post.access_level.level > 0 && maxPosts > 0 %>
       <%= link_to(new_user_session_path) do %>
         <div class="tile semi">
           <div class="tile-inner">
             <div class="post-type-title"><%= post.post_type.name %></div>
             <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
             <h3><%= post.title %></h3>
-            <div class="typcn typcn-lock-closed not-semi"></div>
-            <div>Member Content</div>
-            <!-- <span class="tile-author">by: <%= post.user.fname %></span> -->
-    <!--         <p><%= post.body %></p> -->
+            <div class="restricted-content-label">
+              <div class="fade-block"></div>
+              <div class="content-lock-icon typcn typcn-lock-closed"></div>
+              <div>Member Content</div>
+            </div>
+            <span class="tile-author">by: <%= post.user.fname %></span>
           </div>
         </div>
       <% end %> 

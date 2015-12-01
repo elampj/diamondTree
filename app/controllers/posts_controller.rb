@@ -73,7 +73,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :icon, :body, :user_id, :post_type_id)
+      params.require(:post).permit(:title, :icon, :body, :user_id, :post_type_id, :access_level_id)
     end
 
     def verify_is_admin

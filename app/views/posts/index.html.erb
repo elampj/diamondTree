@@ -15,7 +15,7 @@
 
 <div class="tile-holder">
 
-  <div class="tile-type-sections all-section">
+  <div class="tile-type-section all-section">
     <h4 class="post-type-header">Most Recent</h4>
     <div class="clearfix"></div>
     <%= render 'layouts/recentposts' %>
@@ -23,14 +23,13 @@
 
   
   <% PostType.all.each do |p| %>
-    <div class="tile-type-sections <%= p.plural.downcase.gsub(/\s+/, "") %>-section">
+    <div class="tile-type-section <%= p.plural.downcase.gsub(/\s+/, "") %>-section">
       <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
       <div class="clearfix"></div>
 
       <% Post.all.each do |post| %>
         
-        <% if user_signed_in? && current_user.access_level >= post.restricted_level && post.post_type_id == p.id || post.restricted_level <= 0 && post.post_type_id == p.id %>
-
+        <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && post.post_type_id == p.id || post.access_level.level <= 0 && post.post_type_id == p.id %>
           <%= link_to(post) do %>
             <div class="tile">
               <div class="tile-inner">
@@ -58,32 +57,32 @@
         
       <% Post.all.each do |post| %>
 
-        <% if user_signed_in? && current_user.access_level < post.restricted_level && post.post_type_id == p.id || !user_signed_in? && post.restricted_level > 0 && post.post_type_id == p.id %>
+        <% if user_signed_in? && current_user.access_level.level < post.access_level.level && post.post_type_id == p.id || !user_signed_in? && post.access_level.level > 0 && post.post_type_id == p.id %>
           <%= link_to(new_user_session_path) do %>
             <div class="tile semi">
               <div class="tile-inner">
                 <div class="post-type-title"><%= post.post_type.name %></div>
-                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>-section'></div>
+                <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
                 <h3><%= post.title %></h3>
-                <div class="typcn typcn-lock-closed not-semi"></div>
-                <div>Member Content</div>
-                <!-- <span class="tile-author">by: <%= post.user.fname %></span> -->
-        <!--         <p><%= post.body %></p> -->
+                <div class="restricted-content-label">
+                  <div class="fade-block"></div>
+                  <div class="content-lock-icon typcn typcn-lock-closed"></div>
+                  <div>Member Content</div>
+                </div>
+                <span class="tile-author">by: <%= post.user.fname %></span>
               </div>
             </div>
-        <% end %> 
+          <% end %> 
+        <% end %>
       <% end %>
       
-      <div class="clearfix"></div>
-    <% end %>
-
-    <% if user_signed_in? && current_user.admin? %>
-      <div class="post-links">
-        <%= link_to 'New Post', new_post_path, class: "button" %>
-      </div>
-    <% end %>
-
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="post-links">
+          <%= link_to 'New Post', new_post_path, class: "button" %>
+        </div>
+      <% end %>
     </div>
+    <div class="clearfix"></div>
   <% end %>
 </div>
 
@@ -91,57 +90,25 @@
   $( document ).ready(function() {
     $( "ul.filter-list li" ).click(function() {
 
-      //$(this).siblings().children().each(function( index ) {
-        //$(this).next().children().each(function( index ) {
-
         var currentItem = $(this).text().toLowerCase().split(" ").join("") + '-section';
-        //$('.'+currentItem).each(function( index ) {  
-        //$(this).siblings().each(function( index ) { 
+
         $(this).removeClass('filter-list-item');
         $(this).addClass('filter-list-item-selected');
-        //$(this).removeClass('filter-list-item-selected');
+        
         $(this).siblings().removeClass('filter-list-item');
         $(this).siblings().removeClass('filter-list-item-selected');
         $(this).siblings().addClass('filter-list-item');
         
-        // });
+
         if (currentItem == 'all-section' )
         {
-          $( '.tile-type-sections' ).show();
+          $( '.tile-type-section' ).show();
         }
         else
         {
-          $( '.tile-type-sections' ).hide();
+          $( '.tile-type-section' ).hide();
           $( 'div.'+currentItem).show();
         }
-
-
-          // if ($( this ).hasClass('filter-list-item'))
-          // { 
-          //   $( this ).removeClass('filter-list-item');
-          //   $( this ).addClass('filter-list-item-selected');
-          // }
-          // else if ($( this ).hasClass('filter-list-item-selected'))
-          // { 
-          //   $( this ).removeClass('filter-list-item-selected');
-          //   $( this ).addClass('filter-list-item');
-          // }       
-     // });
-
-      // if ($( this ).hasClass('expand-button'))
-      // {
-      //   //$( this ).removeClass('expand-button');
-      //   //$( this ).addClass('less-button');
-      //   $( this ).addClass('hidden');
-        
-      // }
-      // else if ($( this ).hasClass('less-button'))
-      // {
-      //   $( this ).removeClass('less-button');
-      //   $( this ).addClass('expand-button');
-      //   //$( this ).html('&darr; More');
-      // }
-
     });
   });
 </script>
