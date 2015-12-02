@@ -21,7 +21,7 @@
     <%= render 'layouts/recentposts' %>
   </div>
 
-  <% if PostType.all.each do |p| %>
+  <% PostType.all.each do |p| %>
     <div class="tile-type-section <%= p.plural.downcase.gsub(/\s+/, "") %>-section">
       <h4 class="post-type-header top-breathing"><%= p.plural %></h4>
       <div class="clearfix"></div>
@@ -29,6 +29,7 @@
       <% Post.all.each do |post| %>
         
         <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && post.post_type_id == p.id || post.access_level.level <= 0 && post.post_type_id == p.id %>
+          
           <%= link_to(post) do %>
             <div class="tile">
               <div class="tile-inner">
@@ -36,8 +37,8 @@
                 <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
                 <h3><%= post.title %></h3>
                 <span class="tile-author">by: <%= post.user.fname %></span>
-        <!--         <p><%= post.body %></p> -->
               </div>
+
               <% if user_signed_in? && current_user.admin? %>
                 <%= link_to(post) do %>
                   <span class="typcn typcn-eye"></span>
@@ -51,12 +52,15 @@
               <% end %>
             </div>
           <% end %>
+
         <% end %>
+
       <% end %>
         
       <% Post.all.each do |post| %>
 
         <% if user_signed_in? && current_user.access_level.level < post.access_level.level && post.post_type_id == p.id || !user_signed_in? && post.access_level.level > 0 && post.post_type_id == p.id %>
+
           <%= link_to(new_user_session_path) do %>
             <div class="tile semi">
               <div class="tile-inner">
@@ -72,7 +76,9 @@
               </div>
             </div>
           <% end %> 
+
         <% end %>
+
       <% end %>
       
       <% if user_signed_in? && current_user.admin? %>
@@ -82,7 +88,6 @@
       <% end %>
     </div>
     <div class="clearfix"></div>
-    <% end %>
   <% end %>
 </div>
 
