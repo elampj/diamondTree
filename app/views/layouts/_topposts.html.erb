@@ -1,7 +1,7 @@
 <% maxPosts = 4 %>
 
   <% Post.all.each do |post| %>
-    
+
     <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && maxPosts > 0 || post.access_level.level <= 0 && maxPosts > 0 %>
 
       <%= link_to(post) do %>
@@ -50,7 +50,8 @@
         </div>
       <% end %> 
       <% maxPosts -=1 %>
-    <% end %>
+    <% end %> 
+
   <% end %>
 
   <div class="clearfix"></div>
