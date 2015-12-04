@@ -271,7 +271,11 @@ li.filter-list-item-selected {
  }
 
 .semi {
-  opacity: .5;
+  opacity: .8;
+}
+
+.restricted-content-tile {
+  // opacity: .8;
 }
 
 .tile-icon {
@@ -283,13 +287,14 @@ li.filter-list-item-selected {
   width: 90%;
   text-align: center;
   position: absolute;
-  bottom: 30px;
-  
+  top: 10px;
 }
 
 .content-lock-icon {
-  margin-top: -5px;
-  background: rgba(247,251,251,1);
+  font-size: 2.5em;
+  // margin-top: -10px;
+  margin-bottom: -10px;
+  //background: rgba(247,251,251,1);
 }
 
 .fade-block {
@@ -505,6 +510,10 @@ li.filter-list-item-selected {
 // 
 .hidden {
   display: none;
+}
+
+.hidden-visibility {
+  visibility: hidden;
 }
 
 .expand-button, .less-button {

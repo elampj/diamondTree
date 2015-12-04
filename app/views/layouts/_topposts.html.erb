@@ -2,31 +2,35 @@
 
   <% Post.all.each do |post| %>
 
-    <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && maxPosts > 0 || post.access_level.level <= 0 && maxPosts > 0 %>
+    <% unless post.access_level.level.blank? || user_signed_in? && current_user.access_level.level.blank? %>
 
-      <%= link_to(post) do %>
-        <div class="tile">
-          <div class="tile-inner">
-            <div class="post-type-title"><%= post.post_type.name %></div>
-            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
-            <h3><%= post.title %></h3>
-            <span class="tile-author">by: <%= post.user.fname %></span>
-    <!--         <p><%= post.body %></p> -->
+      <% if user_signed_in? && current_user.access_level.level >= post.access_level.level && maxPosts > 0 || post.access_level.level <= 0 && maxPosts > 0 %>
+
+        <%= link_to(post) do %>
+          <div class="tile">
+            <div class="tile-inner">
+              <div class="post-type-title"><%= post.post_type.name %></div>
+              <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+              <h3><%= post.title %></h3>
+              <span class="tile-author">by: <%= post.user.fname %></span>
+      <!--         <p><%= post.body %></p> -->
+            </div>
+            <% if user_signed_in? && current_user.admin? %>
+              <%= link_to(post) do %>
+                <span class="typcn typcn-eye"></span>
+              <% end %> 
+              <%= link_to(edit_post_path(post)) do %>
+                <span class="typcn typcn-pencil"></span>
+              <% end %>
+              <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                <span class="typcn typcn-trash"></span>
+              <% end %>
+            <% end %>
           </div>
-          <% if user_signed_in? && current_user.admin? %>
-            <%= link_to(post) do %>
-              <span class="typcn typcn-eye"></span>
-            <% end %> 
-            <%= link_to(edit_post_path(post)) do %>
-              <span class="typcn typcn-pencil"></span>
-            <% end %>
-            <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-              <span class="typcn typcn-trash"></span>
-            <% end %>
-          <% end %>
-        </div>
+        <% end %>
+        <% maxPosts -=1 %>
       <% end %>
-      <% maxPosts -=1 %>
+
     <% end %>
 
   <% end %>
@@ -35,14 +39,14 @@
 
     <% if user_signed_in? && current_user.access_level.level < post.access_level.level && maxPosts > 0 || !user_signed_in? && post.access_level.level > 0 && maxPosts > 0 %>
       <%= link_to(new_user_session_path) do %>
-        <div class="tile semi">
+        <div class="tile restricted-content-tile">
           <div class="tile-inner">
             <div class="post-type-title"><%= post.post_type.name %></div>
-            <div class= 'tile-icon typcn typcn-<%= post.icon.downcase %>'></div>
+            <div class= 'tile-icon hidden-visibility typcn typcn-<%= post.icon.downcase %>'></div>
             <h3><%= post.title %></h3>
             <div class="restricted-content-label">
-              <div class="fade-block"></div>
-              <div class="content-lock-icon typcn typcn-lock-closed"></div>
+              <!-- <div class="fade-block"></div> -->
+              <div class="content-lock-icon typcn typcn-key"></div>
               <div>Member Content</div>
             </div>
             <span class="tile-author">by: <%= post.user.fname %></span>

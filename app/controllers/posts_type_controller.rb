@@ -2,17 +2,17 @@ class PostsTypeController < ApplicationController
   
   # GET /posts
   # GET /posts.json
-  def index
+  # def index
     #@post_types = PostTypes.all
-  end
+ # end
 
   # GET /posts/1
   # GET /posts/1.json
   
 
   # GET /posts/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /posts
   # POST /posts.json

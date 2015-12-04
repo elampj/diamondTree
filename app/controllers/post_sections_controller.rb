@@ -1,6 +1,6 @@
 class PostSectionsController < ApplicationController
   before_action :set_post_section, only: [:show, :edit, :update, :destroy]
-  before_filter :verify_is_admin, only: [:index, :new, :edit, :create, :destroy]
+  before_filter :verify_is_admin, only: [:index, :new, :edit, :create, :destroy, :show]
   
 
   # GET /post_sections
